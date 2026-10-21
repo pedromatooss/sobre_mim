@@ -1,0 +1,184 @@
+/* ===== Reset ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cor-texto: #000;
+  --cor-borda: #6b6b76;
+  --cor-vidro: rgba(255, 255, 255, 0.35);
+  --cor-vidro-hover: rgba(255, 255, 255, 0.6);
+  --raio: 6px;
+  --fonte: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+html { height: 100%; }
+
+body {
+  min-height: 100%;
+  font-family: var(--fonte);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--cor-texto);
+  background-color: #d9d9d9;
+  background-image: url("../images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* ===== Layout geral ===== */
+.pagina {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+/* ===== Perfil ===== */
+.perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.perfil__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--raio);
+}
+
+.perfil__foto {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid var(--cor-borda);
+  object-fit: cover;
+  background: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.perfil__nome { font-size: 24px; font-weight: 400; }
+.perfil__descricao { font-size: 18px; }
+
+/* ===== Botões (página inicial) ===== */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6875rem;
+  width: min(22.625rem, 100%);
+  margin-top: 0.75rem;
+}
+
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.375rem;
+  padding: 0 1rem;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  background: var(--cor-vidro);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.botao:hover { background: var(--cor-vidro-hover); transform: translateY(-1px); }
+
+/* ===== Página "Sobre mim" ===== */
+.sobre {
+  max-width: 32rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ===== Página "Projetos" ===== */
+.projetos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  width: min(33.5rem, 100%);
+  margin-top: 0.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 0.625rem;
+  background: var(--cor-vidro);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.card__imagem {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: 2px;
+  background: #ebebeb;
+}
+
+.card__link {
+  align-self: flex-start;
+  color: inherit;
+  font-size: 0.875rem;
+}
+
+.card__link:hover { text-decoration-thickness: 2px; }
+
+/* ===== Redes sociais ===== */
+.redes { display: flex; gap: 1.5rem; list-style: none; margin-top: 0.5rem; }
+.redes a { display: block; border-radius: 4px; }
+
+.redes img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  filter: brightness(0);
+  transition: transform 0.2s ease;
+}
+
+.redes a:hover img { transform: scale(1.15); }
+
+/* ===== Acessibilidade ===== */
+a:focus-visible, .botao:focus-visible {
+  outline: 2px solid #6d28d9;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 600px) {
+  .projetos { grid-template-columns: 1fr; }
+}
+
+/* ===== Leitores de tela ===== */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
